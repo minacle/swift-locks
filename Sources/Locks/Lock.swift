@@ -22,19 +22,19 @@ public final class Lock {
 
     /// Locks itself.
     ///
-    internal func lock() {
+    public func lock() {
         self._lock.lock()
     }
 
     /// Locks itself if is not locked already.
     ///
-    internal func tryLock() -> Bool {
+    public func tryLock() -> Bool {
         return self._lock.tryLock()
     }
 
     /// Unlocks itself.
     ///
-    internal func unlock() {
+    public func unlock() {
         self._lock.unlock()
     }
 }
