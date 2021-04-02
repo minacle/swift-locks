@@ -44,6 +44,7 @@ final class LockTests: XCTestCase {
         return (value, correctAnswer)
     }
 
+    @available(iOS 10, macOS 10.12, tvOS 10, watchOS 3, *)
     func testOSUnfairLock() throws {
         try XCTSkipUnless(_OSUnfairLock.isAvailable, "OSUnfairLock is unavailable")
         for _ in 0 ..< 100 {

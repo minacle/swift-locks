@@ -1,7 +1,9 @@
 #if canImport(Darwin)
 import Darwin
-#else
+#elseif canImport(Glibc)
 import Glibc
+#else
+#error("Unsupported platform")
 #endif
 
 internal final class _PThreadRecursiveMutex: _RecursiveLock {
