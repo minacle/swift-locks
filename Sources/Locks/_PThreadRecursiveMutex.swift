@@ -4,14 +4,10 @@ import Darwin
 import Glibc
 #endif
 
-/// A type to encapsulate a recursive lock.
-///
 internal final class _PThreadRecursiveMutex: _RecursiveLock {
 
     private let _lock: UnsafeMutablePointer<pthread_mutex_t>
 
-    /// Initialise a recursive lock.
-    ///
     internal init() {
         self._lock = .allocate(capacity: 1)
         var attr = pthread_mutexattr_t()
@@ -24,20 +20,14 @@ internal final class _PThreadRecursiveMutex: _RecursiveLock {
         self._lock.deallocate()
     }
 
-    /// Locks itself.
-    ///
     internal func lock() {
         pthread_mutex_lock(self._lock)
     }
 
-    /// Locks itself if is not locked already.
-    ///
     internal func tryLock() -> Bool {
         return pthread_mutex_trylock(self._lock) == 0
     }
 
-    /// Unlocks itself.
-    ///
     internal func unlock() {
         pthread_mutex_unlock(self._lock)
     }
