@@ -41,3 +41,14 @@ public final class Lock {
 
 extension Lock: _Lock {
 }
+
+extension Lock {
+
+    public func withLock<T>(_ body: () throws -> T) rethrows -> T {
+        self.lock()
+        defer {
+            self.unlock()
+        }
+        return try body()
+    }
+}

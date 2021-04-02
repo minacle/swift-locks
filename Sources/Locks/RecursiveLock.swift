@@ -31,3 +31,14 @@ public final class RecursiveLock {
 
 extension RecursiveLock: _RecursiveLock {
 }
+
+extension RecursiveLock {
+
+    public func withLock<T>(_ body: () throws -> T) rethrows -> T {
+        self.lock()
+        defer {
+            self.unlock()
+        }
+        return try body()
+    }
+}
