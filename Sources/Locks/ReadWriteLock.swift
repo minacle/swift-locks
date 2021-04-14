@@ -93,4 +93,22 @@ extension ReadWriteLock {
         }
         return try body()
     }
+
+    @inlinable
+    public func withLock(to _: Read, _ body: () throws -> Void) rethrows {
+        self.lock(to: .read)
+        defer {
+            self.unlock()
+        }
+        try body()
+    }
+
+    @inlinable
+    public func withLock(to _: Write, _ body: () throws -> Void) rethrows {
+        self.lock(to: .write)
+        defer {
+            self.unlock()
+        }
+        try body()
+    }
 }
