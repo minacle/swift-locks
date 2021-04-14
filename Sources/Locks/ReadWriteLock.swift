@@ -45,9 +45,6 @@ public final class ReadWriteLock {
     }
 }
 
-extension ReadWriteLock: _ReadWriteLock  {
-}
-
 extension ReadWriteLock {
 
     public enum Read {

@@ -29,9 +29,6 @@ public final class RecursiveLock {
     }
 }
 
-extension RecursiveLock: _RecursiveLock {
-}
-
 extension RecursiveLock {
 
     @inlinable

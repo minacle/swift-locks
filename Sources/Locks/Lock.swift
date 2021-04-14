@@ -39,9 +39,6 @@ public final class Lock {
     }
 }
 
-extension Lock: _Lock {
-}
-
 extension Lock {
 
     @inlinable
