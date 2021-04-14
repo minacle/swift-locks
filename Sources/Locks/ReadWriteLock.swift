@@ -77,17 +77,17 @@ extension ReadWriteLock {
     }
 
     public func withLock<T>(to _: Read, _ body: () throws -> T) rethrows -> T {
-        self._lock.lockRead()
+        self.lock(to: .read)
         defer {
-            self._lock.lockRead()
+            self.unlock()
         }
         return try body()
     }
 
     public func withLock<T>(to _: Write, _ body: () throws -> T) rethrows -> T {
-        self._lock.lockWrite()
+        self.lock(to: .write)
         defer {
-            self._lock.lockWrite()
+            self.unlock()
         }
         return try body()
     }
