@@ -34,6 +34,7 @@ extension RecursiveLock: _RecursiveLock {
 
 extension RecursiveLock {
 
+    @inlinable
     public func withLock<T>(_ body: () throws -> T) rethrows -> T {
         self.lock()
         defer {

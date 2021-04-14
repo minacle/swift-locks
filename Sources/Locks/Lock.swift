@@ -44,6 +44,7 @@ extension Lock: _Lock {
 
 extension Lock {
 
+    @inlinable
     public func withLock<T>(_ body: () throws -> T) rethrows -> T {
         self.lock()
         defer {

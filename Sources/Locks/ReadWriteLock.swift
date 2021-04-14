@@ -76,6 +76,7 @@ extension ReadWriteLock {
         return self._lock.tryLockWrite()
     }
 
+    @inlinable
     public func withLock<T>(to _: Read, _ body: () throws -> T) rethrows -> T {
         self.lock(to: .read)
         defer {
@@ -84,6 +85,7 @@ extension ReadWriteLock {
         return try body()
     }
 
+    @inlinable
     public func withLock<T>(to _: Write, _ body: () throws -> T) rethrows -> T {
         self.lock(to: .write)
         defer {
