@@ -13,29 +13,33 @@ public final class ReadWriteLock {
     /// Locks itself to read.
     ///
     @available(*, deprecated, renamed: "lock(to:)")
+    @inlinable
     public func lockRead() {
-        self._lock.lockRead()
+        self.lock(to: .read)
     }
 
     /// Locks itself to write.
     ///
     @available(*, deprecated, renamed: "lock(to:)")
+    @inlinable
     public func lockWrite() {
-        self._lock.lockWrite()
+        self.lock(to: .write)
     }
 
     /// Locks itself to read if is not locked to write already.
     ///
     @available(*, deprecated, renamed: "tryLock(to:)")
+    @inlinable
     public func tryLockRead() -> Bool {
-        return self._lock.tryLockRead()
+        return self.tryLock(to: .read)
     }
 
     /// Locks itself to read if is not locked to read or write already.
     ///
     @available(*, deprecated, renamed: "tryLock(to:)")
+    @inlinable
     public func tryLockWrite() -> Bool {
-        return self._lock.tryLockWrite()
+        return self.tryLock(to: .write)
     }
 
     /// Unlocks itself.
