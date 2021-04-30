@@ -8,11 +8,15 @@ let package = Package(
         .library(
             name: "Locks",
             targets: ["Locks"]),
+        .library(
+            name: "CSpinLock",
+            targets: ["CSpinLock"]),
     ],
     targets: [
+        .target(name: "CSpinLock"),
         .target(
             name: "Locks",
-            dependencies: []),
+            dependencies: ["CSpinLock"]),
         .testTarget(
             name: "LocksTests",
             dependencies: ["Locks"]),
