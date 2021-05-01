@@ -1,4 +1,5 @@
 #if canImport(Darwin)
+@_implementationOnly
 import Darwin
 
 @available(iOS 10, macOS 10.12, tvOS 10, watchOS 3, *)
