@@ -50,6 +50,7 @@ extension Lock {
         return try body()
     }
 
+    @inlinable
     public func withLock(_ body: () throws -> Void) rethrows {
         self.lock()
         defer {
