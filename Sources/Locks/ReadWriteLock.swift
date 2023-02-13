@@ -1,6 +1,6 @@
 /// A type to encapsulate a read/write lock.
 ///
-public final class ReadWriteLock {
+public final class ReadWriteLock: Sendable {
 
     private let _lock: _ReadWriteLock
 

@@ -1,4 +1,4 @@
-internal protocol _RecursiveLock: AnyObject {
+internal protocol _RecursiveLock: AnyObject, Sendable {
 
     init()
 

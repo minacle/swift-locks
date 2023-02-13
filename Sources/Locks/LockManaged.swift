@@ -151,8 +151,12 @@ where Value: ExpressibleByNilLiteral {
     }
 }
 
+extension LockManaged: Sendable
+where Value: Sendable {
+}
+
 @usableFromInline
-internal protocol ValueManageableLock {
+internal protocol ValueManageableLock: Sendable {
 
     func withLock<T>(_ body: () throws -> T) rethrows -> T
     func withLock<T>(to _: ReadWriteLock.Read, _ body: () throws -> T) rethrows -> T

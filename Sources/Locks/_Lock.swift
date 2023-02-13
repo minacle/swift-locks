@@ -1,4 +1,4 @@
-internal protocol _Lock: AnyObject {
+internal protocol _Lock: AnyObject, Sendable {
 
     init()
     

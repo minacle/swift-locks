@@ -1,6 +1,6 @@
 /// A type to encapsulate a recursive lock.
 ///
-public final class RecursiveLock {
+public final class RecursiveLock: Sendable {
 
     private let _lock: _RecursiveLock
 

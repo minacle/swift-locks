@@ -1,4 +1,4 @@
-internal protocol _ReadWriteLock: AnyObject {
+internal protocol _ReadWriteLock: AnyObject, Sendable {
 
     init()
 

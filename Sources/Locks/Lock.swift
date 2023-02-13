@@ -1,6 +1,6 @@
 /// A type to encapsulate an unfair lock.
 ///
-public final class Lock {
+public final class Lock: Sendable {
 
     private let _lock: _Lock
 
