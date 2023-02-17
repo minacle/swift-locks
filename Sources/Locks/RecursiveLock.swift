@@ -49,3 +49,25 @@ extension RecursiveLock {
         try body()
     }
 }
+
+@available(iOS 13, macOS 10.15, tvOS 13, watchOS 6, *)
+extension RecursiveLock {
+
+    @inlinable
+    public func withLock<T>(_ body: @Sendable () async throws -> T) async rethrows -> T {
+        self.lock()
+        defer {
+            self.unlock()
+        }
+        return try await body()
+    }
+
+    @inlinable
+    public func withLock(_ body: @Sendable () async throws -> Void) async rethrows {
+        self.lock()
+        defer {
+            self.unlock()
+        }
+        try await body()
+    }
+}

@@ -89,3 +89,43 @@ extension ReadWriteLock {
         try body()
     }
 }
+
+@available(iOS 13, macOS 10.15, tvOS 13, watchOS 6, *)
+extension ReadWriteLock {
+
+    @inlinable
+    public func withLock<T>(to _: Read, _ body: @Sendable () async throws -> T) async rethrows -> T {
+        self.lock(to: .read)
+        defer {
+            self.unlock()
+        }
+        return try await body()
+    }
+
+    @inlinable
+    public func withLock<T>(to _: Write, _ body: @Sendable () async throws -> T) async rethrows -> T {
+        self.lock(to: .write)
+        defer {
+            self.unlock()
+        }
+        return try await body()
+    }
+
+    @inlinable
+    public func withLock(to _: Read, _ body: @Sendable () async throws -> Void) async rethrows {
+        self.lock(to: .read)
+        defer {
+            self.unlock()
+        }
+        try await body()
+    }
+
+    @inlinable
+    public func withLock(to _: Write, _ body: @Sendable () async throws -> Void) async rethrows {
+        self.lock(to: .write)
+        defer {
+            self.unlock()
+        }
+        try await body()
+    }
+}
