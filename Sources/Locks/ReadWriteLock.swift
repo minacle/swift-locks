@@ -12,34 +12,26 @@ public final class ReadWriteLock: Sendable {
 
     /// Locks itself to read.
     ///
-    @available(*, deprecated, renamed: "lock(to:)")
-    @inlinable
-    public func lockRead() {
-        self.lock(to: .read)
+    public func lock(to _: Read) {
+        self._lock.lockRead()
     }
 
     /// Locks itself to write.
     ///
-    @available(*, deprecated, renamed: "lock(to:)")
-    @inlinable
-    public func lockWrite() {
-        self.lock(to: .write)
+    public func lock(to _: Write) {
+        self._lock.lockWrite()
     }
 
     /// Locks itself to read if is not locked to write already.
     ///
-    @available(*, deprecated, renamed: "tryLock(to:)")
-    @inlinable
-    public func tryLockRead() -> Bool {
-        return self.tryLock(to: .read)
+    public func tryLock(to _: Read) -> Bool {
+        return self._lock.tryLockRead()
     }
 
     /// Locks itself to read if is not locked to read or write already.
     ///
-    @available(*, deprecated, renamed: "tryLock(to:)")
-    @inlinable
-    public func tryLockWrite() -> Bool {
-        return self.tryLock(to: .write)
+    public func tryLock(to _: Write) -> Bool {
+        return self._lock.tryLockWrite()
     }
 
     /// Unlocks itself.
@@ -59,22 +51,6 @@ extension ReadWriteLock {
     public enum Write {
 
         case write
-    }
-
-    public func lock(to _: Read) {
-        self._lock.lockRead()
-    }
-
-    public func lock(to _: Write) {
-        self._lock.lockWrite()
-    }
-
-    public func tryLock(to _: Read) -> Bool {
-        return self._lock.tryLockRead()
-    }
-
-    public func tryLock(to _: Write) -> Bool {
-        return self._lock.tryLockWrite()
     }
 
     @inlinable
