@@ -15,7 +15,7 @@ internal final class _PThreadRecursiveMutex: _RecursiveLock {
     internal init() {
         self._lock = .allocate(capacity: 1)
         var attr = pthread_mutexattr_t()
-        pthread_mutexattr_settype(&attr, PTHREAD_MUTEX_RECURSIVE)
+        pthread_mutexattr_settype(&attr, .init(PTHREAD_MUTEX_RECURSIVE))
         pthread_mutex_init(self._lock, &attr)
     }
 
